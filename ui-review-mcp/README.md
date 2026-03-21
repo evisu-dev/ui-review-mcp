@@ -112,6 +112,103 @@ src/
     └── screenshot.ts         # Playwright操作・DOM取得・axe実行
 ```
 
+## 動作確認手順
+
+### 1. ビルド確認
+
+```bash
+cd ui-review-mcp
+npm run build
+```
+
+エラーなくビルドが完了すれば OK。
+
+### 2. サーバー起動確認（CLI）
+
+テスト用スクリプトで疎通確認できます:
+
+```bash
+node test-mcp.mjs
+```
+
+以下の5項目を順に確認します:
+1. `initialize` — サーバー起動・プロトコルバージョン応答
+2. `tools/list` — 3ツールの一覧と入力スキーマ
+3. `generate_ui_fix_prompt` — テキスト生成の疎通
+4. `analyze_ui_image` — 画像正規化の疎通（1x1 PNG）
+5. `analyze_ui_url` — Playwright起動・スクリーンショット・DOM取得・axe実行（example.com）
+
+### 3. MCPクライアントからの接続確認
+
+`.kiro/settings/mcp.json` または Claude Desktop の設定に追加後、
+MCPクライアントのツール一覧に以下の3つが表示されれば接続成功です:
+- `analyze_ui_image`
+- `analyze_ui_url`
+- `generate_ui_fix_prompt`
+
+## よくある失敗例とトラブルシューティング
+
+### Playwright のブラウザが見つからない
+
+```
+Error: Executable doesn't exist at ...
+```
+
+Chromium がインストールされていません。以下を実行してください:
+
+```bash
+npx playwright install chromium
+```
+
+### ビルドされていない
+
+```
+Error: Cannot find module '.../dist/index.js'
+```
+
+ビルドを実行してください:
+
+```bash
+npm run build
+```
+
+### `mcp.json` のパスが間違っている
+
+`args` に指定するパスは絶対パスで記述してください。
+相対パスだとMCPクライアントの作業ディレクトリによっては解決できません。
+
+```json
+{
+  "mcpServers": {
+    "ui-review": {
+      "command": "node",
+      "args": ["/Users/yourname/path/to/ui-review-mcp/dist/index.js"]
+    }
+  }
+}
+```
+
+### `analyze_ui_url` がタイムアウトする
+
+ページ読み込みのタイムアウトは30秒です。
+ネットワークが遅い環境や、SPA で `networkidle` に到達しにくいページでは失敗する可能性があります。
+
+### Node.js バージョンが古い
+
+Node.js 20以上が必要です。以下で確認してください:
+
+```bash
+node --version
+```
+
+## Playwright 関連の初期セットアップ注意点
+
+- `npx playwright install chromium` は初回のみ必要です（約250MB）
+- macOS では追加の依存ライブラリは不要です
+- Linux 環境では `npx playwright install-deps chromium` で OS レベルの依存も必要になる場合があります
+- CI 環境では Playwright の Docker イメージ（`mcr.microsoft.com/playwright`）の利用を推奨します
+- ブラウザはヘッドレスモードで起動します。GUI は不要です
+
 ## サンプル
 
 `samples/` ディレクトリにサンプル入出力があります。
