@@ -1,0 +1,35 @@
+{
+  "name": "ui-review-mcp",
+  "version": "0.1.0",
+  "description": "UIレビュー材料の整理と改善指示プロンプト生成を行うMCPサーバー",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "ui-review-mcp": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "start": "node dist/index.js"
+  },
+  "keywords": [
+    "mcp",
+    "ui-review",
+    "accessibility"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "dependencies": {
+    "@axe-core/playwright": "^4.11.1",
+    "@modelcontextprotocol/sdk": "^1.27.1",
+    "playwright": "^1.58.2",
+    "sharp": "^0.34.5",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.0",
+    "typescript": "^5.9.3"
+  }
+}

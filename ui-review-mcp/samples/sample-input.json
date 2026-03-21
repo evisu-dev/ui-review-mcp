@@ -1,0 +1,29 @@
+{
+  "analyze_ui_image": {
+    "description": "画像からUIレビュー材料を生成する例",
+    "input": {
+      "imageBase64": "(Base64エンコードされたスクリーンショット画像)",
+      "mimeType": "image/png",
+      "purpose": "会員登録の完了率改善",
+      "device": "mobile"
+    }
+  },
+  "analyze_ui_url": {
+    "description": "URLからUIレビュー材料を生成する例",
+    "input": {
+      "url": "https://example.com/register",
+      "device": "mobile",
+      "purpose": "会員登録の完了率改善"
+    }
+  },
+  "generate_ui_fix_prompt": {
+    "description": "レビュー結果から改善指示プロンプトを生成する例",
+    "input": {
+      "reviewContext": "1. CTAボタンのコントラスト比が2.1:1で、WCAG AA基準(4.5:1)を下回る\n2. フォームのラベルが入力欄から離れすぎており、関連性が視覚的に弱い\n3. エラーメッセージが赤色のみで伝達されており、色覚多様性への配慮が不足",
+      "techStack": "Laravel / Blade / Tailwind CSS",
+      "constraints": "既存のコンポーネント構成を維持。Tailwindのユーティリティクラスのみで対応。",
+      "screenName": "会員登録画面",
+      "purpose": "会員登録の完了率改善"
+    }
+  }
+}
