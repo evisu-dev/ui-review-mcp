@@ -1,0 +1,16 @@
+{
+  "enabled": true,
+  "name": "PHPファイル作成時チェック",
+  "description": "新しいPHPファイルを作成した際に、基本的なコーディング規約を確認します",
+  "version": "1",
+  "when": {
+    "type": "fileCreated",
+    "patterns": [
+      "**/*.php"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "新規作成されたPHPファイルが基本ルールに従っているか確認してください：\n1. `declare(strict_types=1);` がファイル先頭にあるか\n2. 型宣言（引数・戻り値）が適切に記述されているか\n3. コンストラクタ注入は `private readonly` を使用しているか\nエラーがあれば修正を提案してください。"
+  }
+}

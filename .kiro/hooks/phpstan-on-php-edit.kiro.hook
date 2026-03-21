@@ -1,0 +1,16 @@
+{
+  "enabled": true,
+  "name": "PHPファイル編集時チェック",
+  "description": "PHPファイルを編集した際に、getDiagnosticsで型エラーや構文エラーを検出します",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "**/*.php"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "編集されたPHPファイルに対してgetDiagnosticsを実行し、型エラーや構文エラーがないか確認してください。エラーが検出された場合は修正を提案してください。"
+  }
+}

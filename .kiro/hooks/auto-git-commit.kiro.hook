@@ -1,0 +1,13 @@
+{
+  "enabled": true,
+  "name": "Auto Git Commit",
+  "description": "Agent実行停止時に、変更内容を自動的にGitコミットします",
+  "version": "1",
+  "when": {
+    "type": "agentStop"
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "作業が完了しました。以下の手順でGitコミットを実行してください：\n\n1. `git status` で変更ファイルを確認\n2. 変更内容から適切なコミットタイプを判断（feat/fix/docs/refactor/test/chore）\n3. 作業内容を1行で要約（日本語、50文字以内）\n4. 以下のコマンドを実行：\n\n```bash\ngit add .\ngit commit -m \"<type>: <要約>\"\n```\n\n変更がない場合はスキップしてください。"
+  }
+}

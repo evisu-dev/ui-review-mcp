@@ -1,0 +1,16 @@
+{
+  "enabled": true,
+  "name": "Eloquent Model PHPDoc チェック",
+  "description": "Eloquentモデルファイルを編集した際に、PHPDocアノテーションが適切に定義されているか確認します",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "**/Models/**/*.php"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "編集されたEloquentモデルのPHPDocアノテーションを確認してください：\n1. カラムに@propertyアノテーションがあるか\n2. リレーションに@property-readアノテーションがあるか\n3. カスタムスコープに@methodアノテーションがあるか\n不足があれば追加を提案してください。"
+  }
+}
