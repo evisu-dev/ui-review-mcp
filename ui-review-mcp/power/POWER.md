@@ -1,3 +1,11 @@
+---
+name: "ui-review"
+displayName: "UI Review"
+description: "Collect UI review materials from screenshots or URLs and generate structured fix prompts for implementation AI. Includes Playwright screenshots, DOM analysis, and axe-core accessibility checks."
+keywords: ["ui","review","accessibility","screenshot","playwright","axe-core","ui-review"]
+author: "Local"
+---
+
 # UI Review Power
 
 ## 概要
