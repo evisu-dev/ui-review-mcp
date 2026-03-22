@@ -11,10 +11,11 @@ echo "=== ui-review Power インストール ==="
 
 # 1. Power ディレクトリにコピー
 echo "[1/3] Power ファイルをコピー中..."
-mkdir -p "$POWER_DIR/steering"
+mkdir -p "$POWER_DIR/steering" "$POWER_DIR/icons"
 cp "$POWER_SRC/mcp.json" "$POWER_DIR/mcp.json"
 cp "$POWER_SRC/POWER.md" "$POWER_DIR/POWER.md"
 cp "$POWER_SRC/steering/ui-review-best-practices.md" "$POWER_DIR/steering/ui-review-best-practices.md"
+cp "$POWER_SRC/icons/ui-review.png" "$POWER_DIR/icons/ui-review.png"
 
 # 2. installed.json を更新
 echo "[2/3] installed.json を更新中..."
@@ -61,7 +62,7 @@ data['powers']['ui-review'] = {
     'license': 'MIT',
     'keywords': ['ui', 'review', 'accessibility', 'screenshot', 'playwright', 'axe-core', 'ui-review'],
     'displayName': 'UI Review',
-    'iconUrl': '',
+    'iconUrl': 'https://raw.githubusercontent.com/evisu-dev/ui-review-mcp/main/ui-review-mcp/power/icons/ui-review.png',
     'installed': True,
     'installPath': '$POWER_DIR',
     'source': {'type': 'local'}
