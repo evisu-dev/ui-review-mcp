@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "ui-review": {
+      "command": "node",
+      "args": [
+        "${POWER_DIR}/dist/index.js"
+      ]
+    }
+  }
+}
