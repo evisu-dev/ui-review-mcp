@@ -23,7 +23,7 @@ npx playwright install chromium
 
 ### MCP設定（Kiro / Claude Desktop）
 
-`mcp.json` に以下を追加:
+npm パッケージ経由（推奨）:
 
 ```json
 {
@@ -36,11 +36,17 @@ npx playwright install chromium
 }
 ```
 
-### グローバルインストール
+ローカルビルドから直接実行する場合:
 
-```bash
-npm install -g ui-review-mcp
-npx playwright install chromium
+```json
+{
+  "mcpServers": {
+    "ui-review": {
+      "command": "node",
+      "args": ["<絶対パス>/ui-review-mcp/dist/index.js"]
+    }
+  }
+}
 ```
 
 ## 提供ツール
