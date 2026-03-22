@@ -1,9 +1,10 @@
 {
   "mcpServers": {
     "ui-review": {
-      "command": "node",
+      "command": "npx",
       "args": [
-        "${POWER_DIR}/dist/index.js"
+        "-y",
+        "ui-review-mcp"
       ]
     }
   }
