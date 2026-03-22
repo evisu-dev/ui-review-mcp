@@ -33,31 +33,25 @@ npm run build
 
 ## MCP設定
 
-Kiro / Claude Desktop などのMCPクライアントに以下を設定してください。
+### Kiro Power としてインストール（推奨）
 
-### Kiro の場合（`.kiro/settings/mcp.json`）
-
-```json
-{
-  "mcpServers": {
-    "ui-review": {
-      "command": "node",
-      "args": ["/path/to/ui-review-mcp/dist/index.js"],
-      "disabled": false,
-      "autoApprove": []
-    }
-  }
-}
+```bash
+bash ui-review-mcp/power/install.sh
 ```
 
-### Claude Desktop の場合
+`install.sh` が `~/.kiro/powers/installed/ui-review/` にファイルをコピーし、
+`mcp.json` を自動生成します。Kiro を再起動すれば Power として利用可能です。
+
+### 手動設定（Kiro / Claude Desktop）
+
+`mcp.json` に以下を追加してください。`<絶対パス>` は環境に合わせて置き換えてください。
 
 ```json
 {
   "mcpServers": {
     "ui-review": {
       "command": "node",
-      "args": ["/path/to/ui-review-mcp/dist/index.js"]
+      "args": ["<絶対パス>/ui-review-mcp/dist/index.js"]
     }
   }
 }
@@ -182,7 +176,7 @@ npm run build
   "mcpServers": {
     "ui-review": {
       "command": "node",
-      "args": ["/Users/yourname/path/to/ui-review-mcp/dist/index.js"]
+      "args": ["<絶対パス>/ui-review-mcp/dist/index.js"]
     }
   }
 }
