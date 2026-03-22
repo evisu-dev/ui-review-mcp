@@ -58,7 +58,7 @@ data['powers']['ui-review'] = {
     'name': 'ui-review',
     'description': 'UIレビュー材料の整理と改善指示プロンプト生成 - スクリーンショットやURLからUIの問題点を構造化し、実装AIに渡せる改善指示を生成',
     'mcpServers': ['ui-review'],
-    'author': 'Local',
+    'author': 'evisu-dev',
     'license': 'MIT',
     'keywords': ['ui', 'review', 'accessibility', 'screenshot', 'playwright', 'axe-core', 'ui-review'],
     'displayName': 'UI Review',
