@@ -1,23 +1,44 @@
 {
   "name": "ui-review-mcp",
   "version": "0.1.0",
-  "description": "UIレビュー材料の整理と改善指示プロンプト生成を行うMCPサーバー",
+  "description": "MCP server that collects UI review materials (screenshots, DOM, axe-core accessibility checks) and generates structured fix prompts for implementation AI",
   "type": "module",
   "main": "dist/index.js",
   "bin": {
     "ui-review-mcp": "dist/index.js"
   },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch",
-    "start": "node dist/index.js"
+    "start": "node dist/index.js",
+    "prepublishOnly": "npm run build"
   },
   "keywords": [
     "mcp",
+    "model-context-protocol",
     "ui-review",
-    "accessibility"
+    "accessibility",
+    "axe-core",
+    "playwright",
+    "screenshot",
+    "kiro",
+    "kiro-power"
   ],
+  "author": "evisu-dev",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/evisu-dev/ui-review-mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/evisu-dev/ui-review-mcp/issues"
+  },
+  "homepage": "https://github.com/evisu-dev/ui-review-mcp#readme",
   "engines": {
     "node": ">=20.0.0"
   },
