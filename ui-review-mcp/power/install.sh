@@ -51,8 +51,48 @@ cat > "$POWER_DIR/mcp.json" << MCPJSON
 }
 MCPJSON
 
-# 4. installed.json を更新
-echo "[4/4] installed.json を更新中..."
+# 4. registry.json / user-added.json の iconUrl をローカルパスに更新
+echo "[4/5] iconUrl をローカルパスに更新中..."
+ICON_PATH="$POWER_DIR/icons/ui-review.png"
+REGISTRY_JSON="$HOME/.kiro/powers/registry.json"
+USER_ADDED_JSON="$HOME/.kiro/powers/registries/user-added.json"
+
+if command -v python3 &> /dev/null; then
+  python3 -c "
+import json, os
+
+icon_path = '$ICON_PATH'
+
+# registry.json
+reg_path = '$REGISTRY_JSON'
+if os.path.exists(reg_path):
+    with open(reg_path) as f:
+        data = json.load(f)
+    if 'ui-review' in data.get('powers', {}):
+        data['powers']['ui-review']['iconUrl'] = icon_path
+        with open(reg_path, 'w') as f:
+            json.dump(data, f, indent=2, ensure_ascii=False)
+        print('  → registry.json 更新完了')
+
+# user-added.json
+ua_path = '$USER_ADDED_JSON'
+if os.path.exists(ua_path):
+    with open(ua_path) as f:
+        data = json.load(f)
+    for p in data.get('powers', []):
+        if p.get('name') == 'ui-review':
+            p['iconUrl'] = icon_path
+    with open(ua_path, 'w') as f:
+        json.dump(data, f, indent=2, ensure_ascii=False)
+    print('  → user-added.json 更新完了')
+"
+else
+  echo "警告: python3 が見つかりません。iconUrl を手動で更新してください。"
+  echo "  パス: $ICON_PATH"
+fi
+
+# 5. installed.json を更新
+echo "[5/5] installed.json を更新中..."
 INSTALLED_JSON="$HOME/.kiro/powers/installed.json"
 if [ -f "$INSTALLED_JSON" ]; then
   if ! grep -q '"ui-review"' "$INSTALLED_JSON"; then
