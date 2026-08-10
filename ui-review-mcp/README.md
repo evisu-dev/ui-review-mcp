@@ -182,4 +182,4 @@ SPA で `networkidle` に到達しにくいページでは失敗する可能性�
 
 ## ライセンス
 
-MIT
+MIT License. See `LICENSE`.
